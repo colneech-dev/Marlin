@@ -781,15 +781,21 @@
 #endif
 
 // Consolidate TMC26X, validate migration (#24373)
-#define _ISMAX(A) defined(A##_MAX_CURRENT) ||
-#define _ISSNS(A) defined(A##_SENSE_RESISTOR) ||
-#if MAP(_ISMAX, ALL_AXIS_NAMES) 0
+#if defined(X_MAX_CURRENT) || defined(X2_MAX_CURRENT) || defined(Y_MAX_CURRENT) || defined(Y2_MAX_CURRENT) \
+ || defined(Z_MAX_CURRENT) || defined(Z2_MAX_CURRENT) || defined(Z3_MAX_CURRENT) || defined(Z4_MAX_CURRENT) \
+ || defined(I_MAX_CURRENT) || defined(J_MAX_CURRENT) || defined(K_MAX_CURRENT) \
+ || defined(U_MAX_CURRENT) || defined(V_MAX_CURRENT) || defined(W_MAX_CURRENT) \
+ || defined(E0_MAX_CURRENT) || defined(E1_MAX_CURRENT) || defined(E2_MAX_CURRENT) || defined(E3_MAX_CURRENT) \
+ || defined(E4_MAX_CURRENT) || defined(E5_MAX_CURRENT) || defined(E6_MAX_CURRENT) || defined(E7_MAX_CURRENT)
   #error "*_MAX_CURRENT is now set with *_CURRENT."
-#elif MAP(_ISSNS, ALL_AXIS_NAMES) 0
+#elif defined(X_SENSE_RESISTOR) || defined(X2_SENSE_RESISTOR) || defined(Y_SENSE_RESISTOR) || defined(Y2_SENSE_RESISTOR) \
+   || defined(Z_SENSE_RESISTOR) || defined(Z2_SENSE_RESISTOR) || defined(Z3_SENSE_RESISTOR) || defined(Z4_SENSE_RESISTOR) \
+   || defined(I_SENSE_RESISTOR) || defined(J_SENSE_RESISTOR) || defined(K_SENSE_RESISTOR) \
+   || defined(U_SENSE_RESISTOR) || defined(V_SENSE_RESISTOR) || defined(W_SENSE_RESISTOR) \
+   || defined(E0_SENSE_RESISTOR) || defined(E1_SENSE_RESISTOR) || defined(E2_SENSE_RESISTOR) || defined(E3_SENSE_RESISTOR) \
+   || defined(E4_SENSE_RESISTOR) || defined(E5_SENSE_RESISTOR) || defined(E6_SENSE_RESISTOR) || defined(E7_SENSE_RESISTOR)
   #error "*_SENSE_RESISTOR (in Milli-Ohms) is now set with *_RSENSE (in Ohms), so you must divide values by 1000."
 #endif
-#undef _ISMAX
-#undef _ISSNS
 
 // L64xx stepper drivers have been removed
 #define _L6470              0x6470

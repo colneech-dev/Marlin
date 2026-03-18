@@ -48,6 +48,8 @@
 #define _TMC5130_STANDALONE 0x5130B
 #define _TMC5160            0x5160A
 #define _TMC5160_STANDALONE 0x5160B
+#define _TMC26X             0x2600
+#define _TMC26X_STANDALONE  0x2601
 
 #define _DRIVER_ID(V) _CAT(_, V)
 #define _AXIS_DRIVER_TYPE(A,T) (_DRIVER_ID(A##_DRIVER_TYPE) == _DRIVER_ID(T))
